@@ -8,7 +8,7 @@ export default function Layout(props) {
             <div>
                 Toolbar, Sidebar, Backdrop
             </div>
-            <main className='content'>
+            <main className='Content'>
                 {props.children}
             </main>
         </Auxiliary>
