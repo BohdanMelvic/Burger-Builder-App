@@ -22,6 +22,10 @@ export default function BuildControls(props) {
                     less={() => props.ingredientLess(element.type)}
                 />
             )}
+            <button 
+                className='OrderButton'
+                disabled={!props.purchaseAble}
+            >Order Now</button>
         </div>
     )
 }

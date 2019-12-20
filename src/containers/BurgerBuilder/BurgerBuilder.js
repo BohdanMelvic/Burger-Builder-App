@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Auxiliary from '../../hoc/Auxiliary/Auxiliary';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
+import Modal from '../../components/UI/Modal/Modal'
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 
 const ingredientPrices = {
     salad: 0.5,
@@ -21,8 +23,17 @@ export class BurgerBuilder extends Component {
                  cheese: 0,
                  meat: 0
              },
-             totalPrice: 4
+             totalPrice: 4,
+             purchaseAble: false
         }
+    }
+
+    updatePurchaseState (ingredients) {
+        const sum = Object.keys(ingredients).map( igKey => {
+            return ingredients[igKey];
+        }).reduce( (s, i) => s + i, 0);
+
+        this.setState({purchaseAble: sum > 0})
     }
 
     addIngredientHandler = (type) => {
@@ -40,6 +51,7 @@ export class BurgerBuilder extends Component {
             ingredients: updateIngredients, 
             totalPrice: oldPrice + priceAddition
         });
+        this.updatePurchaseState(updateIngredients);
     }
 
     removeIngredientHandler = (type) => {
@@ -58,6 +70,7 @@ export class BurgerBuilder extends Component {
                 ingredients: updateIngredients, 
                 totalPrice: oldPrice - priceAddition
             });
+            this.updatePurchaseState(updateIngredients);
         }
         
     }
@@ -65,11 +78,15 @@ export class BurgerBuilder extends Component {
     render() {
         return (
             <Auxiliary>
+                <Modal>
+                    <OrderSummary ingredients={this.state.ingredients}/>
+                </Modal>
                 <Burger ingredients={this.state.ingredients}/>
                 <BuildControls 
                     ingredientAdd={this.addIngredientHandler}
                     ingredientLess={this.removeIngredientHandler}
                     price={this.state.totalPrice}
+                    purchaseAble={this.state.purchaseAble}
                 />
             </Auxiliary>
         )
