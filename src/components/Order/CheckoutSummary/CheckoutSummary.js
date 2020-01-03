@@ -10,8 +10,14 @@ export default function CheckoutSummary(props) {
             <div className='auxDiv'>
                 <Burger ingredients={props.ingredients}/>
             </div>
-            <Button btnType="Danger" clicked >CANCEL</Button>
-            <Button btnType="Success" clicked >CONTINUE</Button>
+            <Button 
+                btnType="Danger" 
+                clicked={props.checkoutCanceled}
+            > CANCEL</Button>
+            <Button 
+                btnType="Success" 
+                clicked={props.checkoutContinued}
+            > CONTINUE</Button>
         </div>
     )
 }
