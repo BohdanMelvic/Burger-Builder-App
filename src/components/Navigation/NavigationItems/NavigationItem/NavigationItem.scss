@@ -11,11 +11,17 @@
         width: 100%;
         display: block;
     
-        &:hover, &:active, .active {
+        &:hover, &:active {
             color: #40A4C8;
         }
     }
+
+    
+    .active {
+        color: #40A4C8;
+    }
 }
+
 
 @media (min-width: 500px) {
     .NavigationItem {
@@ -30,11 +36,17 @@
             border-bottom: 4px solid transparent;
             padding: 16px 10px;
         
-            &:hover, &:active, .active {
+            &:hover, &:active {
                 background-color: #8F5C2C;
                 border-bottom: 4px solid #40A4C8;
                 color: #FFF;
             }
         }
-    } 
+
+        .active {
+            background-color: #8F5C2C;
+            border-bottom: 4px solid #40A4C8;
+            color: #FFF;
+        }
+    }
 }
