@@ -1,11 +1,23 @@
 import React from 'react';
 import './Order.scss'
 
-export default function Order() {
+export default function Order(props) {
+    const ingredients = [];
+
+    for ( let ingName in props.ingredients) {
+        ingredients.push({ name: ingName, amount: props.ingredients[ingName]});
+    }
+
+    const ingredientsOutpput = ingredients.map( ing => {
+        return (
+            <span key={ing.name}>{ing.name}  {ing.amount} </span>
+        )
+    });
+
     return (
         <div className='Order'>
-            <p>ingredients: salad(1)</p>
-            <p>Price: <strong>USD 5.45</strong></p>
+            <p>Ingredients: {ingredientsOutpput} </p>
+            <p>Price: <strong>USD {props.price.toFixed(2)} </strong></p>
         </div>
     )
 }
