@@ -3,11 +3,21 @@ import './Input.scss';
 
 export default function Input(props) {
     let inputElement = null;
+    let inputClasses = ['InputElement'];
+
+    if (props.invalid && props.shouldValidate && props.touched) {
+        inputClasses.push('Invalid');
+    }
+
+    let validationError = null;
+    if (props.invalid && props.touched) {
+        validationError = <p className='ValidationError'>Please enter a valid {props.name}!</p>;
+    }
 
     switch (props.elementType) {
         case ('input'):
             inputElement = <input 
-                    className='InputElement' 
+                    className={inputClasses.join(' ')} 
                     value={props.value}
                     onChange={props.changed}
                     {...props.elementConfig} 
@@ -15,7 +25,7 @@ export default function Input(props) {
             break;
         case ('textarea'):
             inputElement = <textarea 
-                    className='InputElement' 
+                    className={inputClasses.join(' ')} 
                     value={props.value}
                     onChange={props.changed}
                     {...props.elementConfig}
@@ -24,7 +34,7 @@ export default function Input(props) {
         case ('select'):
             inputElement = (
                 <select 
-                    className='InputElement' 
+                    className={inputClasses.join(' ')} 
                     value={props.value} 
                     onChange={props.changed}
                 >
@@ -39,13 +49,14 @@ export default function Input(props) {
                 </select>);
             break;
         default:
-            inputElement = <input className='InputElement' {...props.elementConfig} value={props.value} />;
+            inputElement = <input className={inputClasses.join(' ')} {...props.elementConfig} value={props.value} />;
             break;
     }
     return (
         <div className='Input'>
-            <label htmlFor="InputElement" className='Label'>{props.label}</label>
+            { props.label ? <label htmlFor="InputElement" className='Label'>{props.label}</label> : null }
             {inputElement}
+            {validationError}
         </div>
     )
 }
