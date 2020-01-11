@@ -22,14 +22,14 @@ export class BurgerBuilder extends Component {
     };
 
     componentDidMount() {
-        // axios({
-        //     method: 'get',
-        //     url: '/ingredients.json',
-        //     responseType: 'json',
-        //     headers: {"Access-Control-Allow-Origin": "*"}
-        //   }).then( res => {
-        //     this.setState({ingredients: res.data});
-        // });
+        axios({
+            method: 'get',
+            url: '/ingredients.json',
+            responseType: 'json',
+            headers: {"Access-Control-Allow-Origin": "*"}
+          }).then( res => {
+            this.setState({ingredients: res.data});
+        });
     }
 
     updatePurchaseState (ingredients) {
@@ -49,6 +49,9 @@ export class BurgerBuilder extends Component {
     }
 
     purchaseContinueHandler = () => {
+
+        // used code below before using redux
+
         // const queryParams = [];
 
         // for (let i in this.props.ings) {
