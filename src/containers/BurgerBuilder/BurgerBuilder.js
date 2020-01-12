@@ -15,12 +15,13 @@ export class BurgerBuilder extends Component {
         super(props);
     
         this.state = {
-             purchasing: false,
+             purchasing: false
         }
     };
 
     componentDidMount() {
         this.props.onInitIngridients();
+        console.log(this.props)
     }
 
     updatePurchaseState (ingredients) {
@@ -102,7 +103,7 @@ export class BurgerBuilder extends Component {
                         ingredientAdd={this.props.onIngredientAdd}
                         ingredientLess={this.props.onIngredientRemove}
                         disabled={disabledInfo}
-                        purchasable={this.updatePurchaseState(this.props.ings)}
+                        purchaseAble={this.updatePurchaseState(this.props.ings)}
                         ordered={this.purchaseHandler}
                         price={this.props.price} />
                 </Auxiliary>
@@ -110,8 +111,8 @@ export class BurgerBuilder extends Component {
             orderSummary = <OrderSummary
                 ingredients={this.props.ings}
                 price={this.props.price}
-                purchaseCancelled={this.purchaseCancelHandler}
-                purchaseContinued={this.purchaseContinueHandler} />;
+                purchaseCancel={this.purchaseCancelHandler}
+                purchaseContinue={this.purchaseContinueHandler} />;
         }
        
         return (

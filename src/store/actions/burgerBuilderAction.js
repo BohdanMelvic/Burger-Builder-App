@@ -22,10 +22,9 @@ export const setIngredients = (ingredients) => {
     }
 }
 
-export const fetchIngedientsFailed = (error) => {
+export const fetchIngedientsFailed = () => {
     return {
-        type: actionTypes.FETCH_INGEDIENTS_FAILED,
-        error: error
+        type: actionTypes.FETCH_INGEDIENTS_FAILED
     }
 } 
 
@@ -37,9 +36,14 @@ export const initIngredients = () => {
             responseType: 'json',
             headers: {"Access-Control-Allow-Origin": "*"}
           }).then( res => {
-            dispatch(setIngredients(res.data));
+            if (res.data === null) {
+                dispatch( fetchIngedientsFailed() )
+            } else {
+                dispatch(setIngredients(res.data));
+            }
+            
         }).catch( error => {
-            dispatch(fetchIngedientsFailed(error))
+            dispatch( fetchIngedientsFailed() );
         })
     }
 }
