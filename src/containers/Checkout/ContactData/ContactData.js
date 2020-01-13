@@ -6,7 +6,7 @@ import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
 import { connect } from 'react-redux';
 import ErrorHandler from '../../../hoc/ErrorHandler/ErrorHandler';
-import * as orderActions from '../../../store/actions/indexActions';
+import * as actions from '../../../store/actions/indexActions';
 
 export class ContactData extends Component {
     constructor(props) {
@@ -216,7 +216,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onOrderBurger: (orderData) => dispatch( orderActions.purchaseBurger(orderData) )
+        onOrderBurger: (orderData) => dispatch( actions.purchaseBurger(orderData) )
     }
 }
 
