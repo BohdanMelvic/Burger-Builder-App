@@ -5,3 +5,5 @@ const DBinstance = axios.create({
 });
 
 export default DBinstance;
+
+// baseURL: 'https://cors-anywhere.herokuapp.com/https://burger-builder-app-4682e.firebaseio.com/'
