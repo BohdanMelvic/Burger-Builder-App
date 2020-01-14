@@ -7,10 +7,11 @@ export const authStart = () => {
     }
 };
 
-export const authSuccess = (authData) => {
+export const authSuccess = (token, userId) => {
     return {
         type: actionTypes.AUTH_SUCCESS,
-        authData: authData
+        idToken: token,
+        userId: userId
     }
 };
 
@@ -40,11 +41,11 @@ export const auth = (email, password, isSignup) => {
             if (res.data === null) {
                 dispatch( authFail('error') )
             } else {
-                dispatch(authSuccess(res.data));
+                dispatch(authSuccess(res.data.idToken, res.data.localId));
             }
         }).catch ( error => {
             console.error(error);
-            dispatch(authFail(error));
+            dispatch(authFail(error.response.data.error));
         });
     }
 };
