@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './Auth.scss';
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
+import * as actions from '../../store/actions/indexActions';
+import { connect } from 'react-redux';
 
 export class Auth extends Component {
     constructor(props) {
@@ -36,8 +38,9 @@ export class Auth extends Component {
                     },
                     valid: false,
                     touched: false
-                },
-             }
+                }
+             },
+             isSignup: true
         }
     }
 
@@ -69,9 +72,24 @@ export class Auth extends Component {
             isValid = value.trim().length <= rules.maxLength && isValid;
         }
 
+        if (rules.isEmail) {
+            const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+            isValid = pattern.test(value) && isValid
+        }
+
         return isValid;
     }
-    
+
+    submitHandler = (event) => {
+        event.preventDefault();
+        this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value, this.state.isSignup);
+    }
+
+    switchAuthModeHandler = () => {
+        this.setState( prevState => {
+            return { isSignup: !prevState.isSignup}
+        })
+    }
 
     render() {
         const formElementsArr = [];
@@ -100,16 +118,25 @@ export class Auth extends Component {
         );
         return (
             <div className='Auth'>
-                <form >
+                <form onSubmit={this.submitHandler}>
                     {form}
                     <Button 
-                        btnType="Success" 
-                       
+                        btnType="Success"   
                     >SUBMIT</Button>
                 </form>
+                <Button 
+                        clicked={this.switchAuthModeHandler}
+                        btnType="Danger"  
+                    >SWITCH TO { this.state.isSignup ? 'SIGN IN' : 'SIGN UP' } </Button>
             </div>
         )
     }
 }
 
-export default Auth
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuth: (email, password, isSignup) => dispatch(actions.auth(email, password, isSignup))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Auth);
