@@ -9,4 +9,7 @@ export { purchaseBurger,
  } from './orderAction';
 
  export { auth, 
-    logout } from './authActions';
+    logout,
+    setAuthRedirectPath,
+    authCheckState
+ } from './authActions';
