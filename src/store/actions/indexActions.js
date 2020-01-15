@@ -8,4 +8,5 @@ export { purchaseBurger,
     fetchOrders
  } from './orderAction';
 
- export { auth } from './authActions';
+ export { auth, 
+    logout } from './authActions';

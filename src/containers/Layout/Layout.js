@@ -3,6 +3,7 @@ import './Layout.scss';
 import Auxiliary from '../../hoc/Auxiliary/Auxiliary';
 import ToolBar from '../../components/Navigation/ToolBar/ToolBar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
+import { connect } from 'react-redux';
 
 export class Layout extends Component {
     constructor(props) {
@@ -28,8 +29,9 @@ export class Layout extends Component {
     render() {
         return (
             <Auxiliary>
-                <ToolBar drawerToggleClicked={this.drawerToggleClickedHandler}/>
-                <SideDrawer 
+                <ToolBar drawerToggleClicked={this.drawerToggleClickedHandler} isAuth={this.props.isAuthenticated} />
+                <SideDrawer
+                    isAuth={this.props.isAuthenticated}
                     closed={this.sideDrawerClosedHandler}
                     open={this.state.showSideDrawer}
                 />
@@ -41,4 +43,10 @@ export class Layout extends Component {
     }
 }
 
-export default Layout;
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.auth.token !== null
+    }
+}
+
+export default connect(mapStateToProps)(Layout);
