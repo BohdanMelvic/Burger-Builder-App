@@ -20,6 +20,7 @@ export default function BuildControls(props) {
                     key={element.type}
                     add={() => props.ingredientAdd(element.type)}
                     less={() => props.ingredientLess(element.type)}
+                    disabled={props.disabled[element.type]}
                 />
             )}
             <button 

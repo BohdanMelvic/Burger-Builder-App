@@ -7,6 +7,7 @@ import Input from '../../../components/UI/Input/Input';
 import { connect } from 'react-redux';
 import ErrorHandler from '../../../hoc/ErrorHandler/ErrorHandler';
 import * as actions from '../../../store/actions/indexActions';
+import {checkValidity} from '../../../shared/utility';
 
 export class ContactData extends Component {
     constructor(props) {
@@ -126,7 +127,7 @@ export class ContactData extends Component {
         const updatedFormElement = { ...updatedOrderForm[inputIdentif] };
 
         updatedFormElement.value = event.target.value;
-        updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
+        updatedFormElement.valid = checkValidity(updatedFormElement.value, updatedFormElement.validation);
         updatedFormElement.touched = true;
         updatedOrderForm[inputIdentif] = updatedFormElement;
 
@@ -137,29 +138,6 @@ export class ContactData extends Component {
         }
 
         this.setState({orderForm: updatedOrderForm, formValid: formIsValid});
-    }
-
-    checkValidity = (value, rules) => {
-        let isValid = true;
-
-        if (rules.required) {
-            isValid = value.trim() !== '' && isValid;
-        }
-        
-        if (rules.minLength) {
-            isValid = value.trim().length >= rules.minLength && isValid;
-        }
-
-        if (rules.maxLength) {
-            isValid = value.trim().length <= rules.maxLength && isValid;
-        }
-
-        if (rules.isEmail) {
-            const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-            isValid = pattern.test(value) && isValid
-        }
-
-        return isValid;
     }
     
     render() {
