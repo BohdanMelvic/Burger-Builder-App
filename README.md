@@ -1,3 +1,21 @@
+# Burger-Builder-App
+
+This project is a simple Chat, where you can message each other during active session. I don't connect it to any database, so after close tab with ChatApp you can't see old messages. 
+Username and room name is unique and requided. You can create your personal room for chating with your friend or choose already created room. List of active rooms you can select in input field. 
+
+I used here different technologies such as:
+
+- JavaScript, HTML5, CSS for Front-End side;
+- Node.js - for Back-End side;
+
+
+<br>
+
+### ![Burger-Builder-App](https://github.com/BohdanMelvic/ChatApp/blob/master/public/img/chat_box.png "WeatherForecastApp") [Burger-Builder-App](https://melvic-chat-app.herokuapp.com/) - the link on FireBase hosting.
+
+<br>
+<br>
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
