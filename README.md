@@ -5,7 +5,7 @@ This project helped to improve my React skills.
 
 <br>
 
-### ![Burger-Builder-App](https://github.com/BohdanMelvic/Burger-Builder-App/src/assets/img/12.png "BurgerBuilderApp") [Burger-Builder-App](https://burger-builder-app-4682e.web.app/) - the link on FireBase hosting.
+### ![Burger-Builder-App](https://github.com/BohdanMelvic/Burger-Builder-App/blob/master/src/assets/img/12.png "BurgerBuilderApp") [Burger-Builder-App](https://burger-builder-app-4682e.web.app/) - the link on FireBase hosting.
 
 <br>
 <br>
