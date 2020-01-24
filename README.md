@@ -1,11 +1,19 @@
 # Burger-Builder-App
 
-This project helped to improve my React skills.
+Just create your dream burger, pass autherization and make the order!
 
+In this project you can create burgers, pass autherization and authentication process, can check all your orders if you were authorized.
+
+This project helped me to improve such skills as: 
+   - React Router
+   - React Hooks
+   - React Redux
+   
+I used here Firebase as DataBase and Firebase hosting as server.
 
 <br>
 
-### ![Burger-Builder-App](https://github.com/BohdanMelvic/Burger-Builder-App/master/src/assets/img/12.png "BurgerBuilderApp") [Burger-Builder-App](https://burger-builder-app-4682e.web.app/) - the link on FireBase hosting.
+### ![Burger-Builder-App](https://github.com/BohdanMelvic/Burger-Builder-App/blob/master/src/assets/img/burg.png "BurgerBuilderApp")           [Burger-Builder-App](https://burger-builder-app-4682e.web.app/) - the link on FireBase hosting.
 
 <br>
 <br>
