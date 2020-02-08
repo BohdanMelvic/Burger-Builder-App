@@ -18,6 +18,31 @@ I used here Firebase as DataBase and Firebase hosting as server.
 <br>
 <br>
 
+### To run the project in local:
+##### Clone the project via Git Bash: 
+```
+git clone https://github.com/BohdanMelvic/Burger-Builder-App.git
+```
+
+##### Open it:
+```
+cd Burger-Builder-App
+```
+
+##### Install all required packages in the Terminal:
+```
+npm install
+```
+
+##### Run the combined dev-server:
+```
+npm start
+```
+
+##### Open your browser at http://localhost:3000/
+<br>
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
